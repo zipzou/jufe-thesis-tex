@@ -49,6 +49,8 @@
 
 封面标题为**三号宋体加粗居中**。
 
+除了封面外，另加了“诚信承诺书”相关页，相关配置于`jufethesis.cls`文件中`pagecover`相关命令下，可根据需要修改。
+
 ![cover](preview/cover.png)
 
 ### 附录格式
@@ -59,9 +61,14 @@
 
 ### 参考文献
 
-参考文献标题部分，采用**三号宋体加粗居中**格式。参考文献项，采用`BibTex`编译，并使用`unsrt`风格，其编号根据引用顺序产生。
+参考文献标题部分，采用**三号宋体加粗居中**格式。参考文献项，采用`BibTex`编译，并使用`gbt7714`样式风格。
+
+其主要样式文件为`gbt-7714-2015-author-year.bst`和`gbt-7714-2015-numerical.bst`，建议拷贝至系统`TEX\bibtex\bst`目录下，样式库具体内容可参考[gbt-7714-2015样式库的相关文档](https://github.com/CTeX-org/gbt7714-bibtex-style)。
+
+若要使用`unsrt`或其他的参考文献样式，请修改`jufethesis.cls`中的对应项即可。
 
 其中参考文献项，采用**五号字体 `18pt`**进行布局，同样地，`18pt`为缩放值。
+
 
 ![references](preview/references.png)
 
@@ -101,87 +108,94 @@
 
 ## 使用教程
 
-请下载或`clone`代码，将`jufethesis.cls`文件与`*.tex`置于同一目录，该模板为支持中文，需要使用`XeLaTeX`编译器进行编译，建议使用`Visual Studio Code + TexLive 2018 + LaTeX Workshop(VSCode扩展插件)`，以下为`VSCode`配置项，配置`XeLaTeX`编译器。
+请下载或`clone`代码，将`jufethesis.cls`文件与`*.tex`置于同一目录，该模板为支持中文，需要使用`XeLaTeX`编译器进行编译，建议使用`Visual Studio Code + TexLive 2019 + LaTeX Workshop(VSCode扩展插件)`，以下为`VSCode`配置项，配置`XeLaTeX`编译器。
 
 ```json
 {
-    "files.autoSave": "onFocusChange",
-    "editor.tabSize": 2,
-    "editor.wordWrap": "on",
-    "latex-workshop.latex.tools": [
+    "folders": [
         {
-            "name": "xelatex",
-            "command": "xelatex",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "-pdf",
-                "%DOC%"
-            ]
-        },
-        {
-            "name": "latexmk",
-            "command": "latexmk",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "-pdf",
-                "%DOC%"
-            ]
-        },
-        {
-            "name": "pdflatex",
-            "command": "pdflatex",
-            "args": [
-                "-synctex=1",
-                "-interaction=nonstopmode",
-                "-file-line-error",
-                "%DOC%"
-            ]
-        },
-        {
-            "name": "bibtex",
-            "command": "bibtex",
-            "args": [
-                "%DOCFILE%"
-            ]
+            "path": "."
         }
     ],
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "xelatex -> bibtex -> xelatex * 2",
-            "tools": [
-                "xelatex",
-                "bibtex",
-                "xelatex",
-                "xelatex"
-            ]
-        },
-        {
-            "name": "pdflatex -> bibtex -> pdflatex*2",
-            "tools": [
-                "pdflatex",
-                "bibtex",
-                "pdflatex",
-                "pdflatex"
-            ]
-        }
-    ],
-    "editor.largeFileOptimizations": false,
-    "latex-workshop.view.pdf.viewer": "tab",
-    "latex-workshop.latex.magic.args": [
-        "-shell-escape",
-        "-synctex=1",
-        "-interaction=nonstopmode",
-        "-file-line-error",
-        "%DOC%"
-    ],
-    "editor.suggestSelection": "first",
-  }
+    "settings": {
+        "files.autoSave": "onFocusChange",
+        "editor.tabSize": 2,
+        "editor.wordWrap": "on",
+        "latex-workshop.latex.tools": [
+            {
+                "name": "xelatex",
+                "command": "xelatex",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "%DOCFILE%"
+                ]
+            },
+            {
+                "name": "latexmk",
+                "command": "latexmk",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "-pdf",
+                    "%DOCFILE%"
+                ]
+            },
+            {
+                "name": "pdflatex",
+                "command": "pdflatex",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "%DOCFILE%"
+                ]
+            },
+            {
+                "name": "bibtex",
+                "command": "bibtex",
+                "args": [
+                    "%DOCFILE%"
+                ]
+            }
+        ],
+        "latex-workshop.latex.recipes": [
+            {
+                "name": "xelatex -> bibtex -> xelatex * 2",
+                "tools": [
+                    "xelatex",
+                    "bibtex",
+                    "xelatex",
+                    "xelatex"
+                ]
+            },
+            {
+                "name": "pdflatex -> bibtex -> pdflatex*2",
+                "tools": [
+                    "pdflatex",
+                    "bibtex",
+                    "pdflatex",
+                    "pdflatex"
+                ]
+            }
+        ],
+        "editor.largeFileOptimizations": false,
+        "latex-workshop.view.pdf.viewer": "tab",
+        "latex-workshop.latex.magic.args": [
+            "-shell-escape",
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "%DOCFILE%"
+        ],
+        "editor.suggestSelection": "first",
+    }
+}
 ```
 
 为生成目录及引用，需要使用二次编译。
 
 配置文件的使用，需要在`TeX`目录下，新建`.vscode`目录，并新建`settings.json`，将上述内容拷贝粘贴即可。具体配置，可参阅相关资源。
+亦或是在本项目的目录下新建`根文件夹名称.code-workspace`文件，并拷贝上述内容。
