@@ -313,6 +313,31 @@
     \vspace{2.5mm}
     \xiaosan{\paperdate}
 
+    \newpage
+    \thispagestyle{empty}
+    \begin{table}[htbp]
+      \begin{tabular}{|l|l|l|l|l|p{1cm}|}
+      \multicolumn{6}{c}{\sanhao{\textbf{普通本科生毕业论文（设计）诚信承诺书}}} \\ \hline
+      \multicolumn{2}{|c|}{毕业论文（设计）题目} & \multicolumn{4}{c|}{\papertitle} \\ \hline
+      \multicolumn{1}{|c|}{学生姓名} & \multicolumn{1}{c|}{\jufeauthorname} & \multicolumn{1}{l|}{专业} & \multicolumn{1}{c|}{\jufeauthormajor} & \multicolumn{1}{c|}{学号} & \multicolumn{1}{c|}{\jufeauthorid} \\ \hline
+      \multicolumn{1}{|c|}{指导老师} & \multicolumn{2}{c|}{\paperteachername} & \multicolumn{1}{c|}{职称} & \multicolumn{2}{c|}{\paperteacherposition} \\ \hline
+      \multicolumn{1}{|c|}{所在学院} & \multicolumn{5}{c|}{\jufeauthorinstitude} \\ \hline 
+      \multicolumn{6}{|c|}{}\\ \multicolumn{6}{|c|}{}\\
+      \multicolumn{6}{|c|}{\sanhao{\textbf{诚信承诺}}} \\
+      \multicolumn{6}{|c|}{}\\ \multicolumn{6}{|c|}{} \\
+      \multicolumn{6}{|l|}{\begin{tabular}[c]{@{}l@{}}
+        \\ \\
+        \xiaosi{本人慎重承诺和声明：}\\
+        \xiaosi{　　我承诺在毕业论文（设计）活动中遵守学校有关规定，恪守学术规范，}\\
+        \xiaosi{在本人的毕业论文中未剽窃、抄袭他人的学术观点、思想和成果，未篡改研} \\
+        \xiaosi{究数据，如有违规行为发生，我愿承担一切责任，接受学校的处理。}    \\ \\ \\  \\ \\ \\ \\ \\ \\
+      \end{tabular}} \\
+      \multicolumn{6}{|r|}{\begin{tabular}[c]{@{}r@{}}\xiaosi{学生签名：　　　　 　　}
+      \\ \xiaosi{ \jufeauthorgraduate 年 　　 月 　　 日　　}\\ \end{tabular}} \\ \hline
+      \end{tabular} 
+      \end{table}
+    
+
   \end{titlepage}
 }
 
@@ -455,7 +480,7 @@
 
 \newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}}
 
-\bibliographystyle{unsrt}
+\bibliographystyle{gbt-7714-2015-author-year}
 
 \setlength{\itemsep}{0pt}
 \renewcommand{\bibsep}{0pt}
